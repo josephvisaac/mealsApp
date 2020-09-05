@@ -45,7 +45,7 @@ class MealDetailScreen extends StatelessWidget {
   String red = jacketColor.firstWhere((jacket)=> jacket == 'red');
   print(red); */
 
-  /**Example #2:
+    /**Example #2:
   enum Size {
     exSmall,
     small,
@@ -77,6 +77,12 @@ List <Jacket> jackets = [
   print(myName);
    */
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.delete),
+        onPressed: () {
+          Navigator.of(context).pop(mealId);
+        },
+      ),
       appBar: AppBar(
         title: Text(selectedMeal.title),
       ),

@@ -16,7 +16,12 @@ class CategoryItem extends StatelessWidget {
       borderRadius: BorderRadius.circular(15), //should match container radius
       child: Container(
         padding: const EdgeInsets.all(15),
-        child: Text(title),
+        child: Center(
+          child: Text(
+            title,
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
