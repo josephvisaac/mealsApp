@@ -4,6 +4,12 @@ import './models/category.dart';
 import './models/meal.dart';
 
 const DUMMY_CATEGORIES = const [
+    Category(
+    title: 'Peruvian',
+    id: 'p1',
+    color: Colors.deepOrangeAccent,
+  ),
+  Category(title: 'Japanese', id: 'j1', color: Color.fromRGBO(211, 47, 47, 1)),
   Category(
     id: 'c1',
     title: 'Italian',
@@ -54,12 +60,7 @@ const DUMMY_CATEGORIES = const [
     title: 'Summer',
     color: Colors.teal,
   ),
-  Category(
-    title: 'Peruvian',
-    id: 'p1',
-    color: Colors.deepOrangeAccent,
-  ),
-  Category(title: 'Japanese', id: 'j1', color: Color.fromRGBO(211, 47, 47, 1)),
+
 ];
 
 const DUMMY_MEALS = const [
