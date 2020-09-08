@@ -16,6 +16,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List<Meal> _availableMeals = DUMMY_MEALS;
+  List<Meal> _favoritedMeals = [];
   Map<String, bool> _filters = {
     'gluten': false,
     'lactose': false,
@@ -45,15 +46,38 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  void _toggleFavorite(String mealId) {
+    final existingIndex =
+        _favoritedMeals.indexWhere((meal) => meal.id == mealId);
+    if (existingIndex >= 0) {
+      //so if it exists, you toggle remove it
+      setState(() {
+        _favoritedMeals.removeAt(existingIndex);
+      });
+    } else
+      setState(() {
+        //if it doesn't exist, you toggle add
+        _favoritedMeals
+            .add(DUMMY_MEALS.firstWhere((meal) => meal.id == mealId));
+      });
+  }
+
+  bool _isMealFavorite(String id) {
+    return _favoritedMeals.any((meal) => meal.id == id);
+// .any() Checks whether any element of this iterable satisfies [test].
+// Checks every element in iteration order, and returns true if any of them make [test] return true, otherwise returns false.
+  }
+
   @override
   Widget build(BuildContext context) {
+    print(_favoritedMeals);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
       title: 'DeliMeals',
       theme: ThemeData(
-        accentColor: Colors.amber,
-        primarySwatch: Colors.pink,
+        accentColor: Colors.red,
+        primarySwatch: Colors.orange,
         canvasColor: Color.fromRGBO(255, 254, 229, 1),
         fontFamily: 'Raleway',
         textTheme: ThemeData.light().textTheme.copyWith(
@@ -69,11 +93,13 @@ class _MyAppState extends State<MyApp> {
               ),
             ),
       ),
-      home: TabsScreen(),
+      // home: TabsScreen(_favoritedMeals),
+      home: TabsScreen(_favoritedMeals),
       routes: {
         CategoryMealsScreen.route: (ctx) =>
             CategoryMealsScreen(_availableMeals),
-        MealDetailScreen.route: (ctx) => MealDetailScreen(),
+        MealDetailScreen.route: (ctx) =>
+            MealDetailScreen(_toggleFavorite, _isMealFavorite),
         FiltersScreen.route: (ctx) => FiltersScreen(
               saveFilters: _setFilters,
               filters: _filters,

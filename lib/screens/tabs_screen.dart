@@ -1,27 +1,54 @@
 import 'package:flutter/material.dart';
+import '../models/meal.dart';
 import '../screens/favorites_screen.dart';
 import '../screens/categories_screen.dart';
 import './main_drawer.dart';
+
 class TabsScreen extends StatefulWidget {
+  final List<Meal> favoriteMeals;
+  TabsScreen(this.favoriteMeals);
   @override
   _TabsScreenState createState() => _TabsScreenState();
 }
 
 class _TabsScreenState extends State<TabsScreen> {
+  List<Map<String, Object>> _pages;
   // final List<Widget> _pages = [
   //   CategoriesScreen(),
   //   FavoritesScreen(),
   // ];
-  final List<Map<String, Object>> _pages = [
-    {
-      'page': CategoriesScreen(),
-      'title': 'Categories',
-    },
-    {
-      'page': FavoritesScreen(),
-      'title': 'Your Favorites',
-    },
-  ];
+  // @override
+  // void didChangeDependencies() {
+  //   setState(() {
+  //         _pages = [
+  //     {
+  //       'page': CategoriesScreen(),
+  //       'title': 'Categories',
+  //     },
+  //     {
+  //       'page': FavoritesScreen(widget.favoriteMeals),
+  //       'title': 'Your Favorites',
+  //     },
+  //   ];
+  //   });
+  //   super.didChangeDependencies();
+  // }
+  @override
+  void initState() {
+    _pages = [
+      {
+        'page': CategoriesScreen(),
+        'title': 'Categories',
+      },
+      {
+        'page': FavoritesScreen(widget.favoriteMeals),
+        'title': 'Your Favorites',
+      },
+      
+    ];
+    super.initState();
+  }
+
   int _selectedPageIndex = 0;
   void _selectPage(int index) {
     setState(() {
@@ -31,20 +58,13 @@ class _TabsScreenState extends State<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // print(widget.favoriteMeals.length);
+    print('tabs screen');
+   
     var primaryColor = Theme.of(context).primaryColor;
     return Scaffold(
       appBar: AppBar(
         title: Text(_pages[_selectedPageIndex]['title']),
-        // bottom: TabBar(tabs: [
-        //   Tab(
-        //     icon: Icon(Icons.category),
-        //     text: 'Categories',
-        //   ),
-        //   Tab(
-        //     icon: Icon(Icons.star),
-        //     text: 'Favorites',
-        //   ),
-        // ]),
       ),
       drawer: MainDrawer(),
       bottomNavigationBar: BottomNavigationBar(
@@ -71,5 +91,3 @@ class _TabsScreenState extends State<TabsScreen> {
     );
   }
 }
-
-

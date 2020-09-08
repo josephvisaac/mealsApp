@@ -58,6 +58,71 @@ const DUMMY_CATEGORIES = const [
 
 const DUMMY_MEALS = const [
   Meal(
+    id: '116',
+    categories: [
+      'c1', 
+    ],
+    title: 'Torta di Mele (Italian Apple Cake)',
+    affordability: Affordability.Affordable,
+    complexity: Complexity.Hard,
+    imageURL:
+        'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F5438948.jpg&w=596&h=399&c=sc&poi=face&q=85',
+    duration: 50,
+    ingredients: [
+      '3/4 teaspoon unseasoned bread crumbs, or as needed',
+      '1-1/2 teaspoons unsalted butter, cubed',
+      ' 1-1/2 teaspoons white sugar',
+      '1/8 vanilla bean, split and scraped',
+      '1/4 eggs',
+      '2 tablespoons and 3/4 teaspoon all-purpose flour',
+      '1/8 teaspoon baking powder',
+      '1/8 pinch salt',
+      '1/4 teaspoon milk, or as needed (optional)',
+      '1/4 pound Granny Smith apples, peeled, cored and sliced thin',
+      '1-1/2 teaspoons unsalted butter, cubed',
+      '1-1/2 teaspoons white sugar',
+    ],
+    steps: [
+      'Preheat the oven to 375 degrees F (190 degrees C). Grease a pie plate and dust with bread crumbs',
+      'Combine melted butter, 1/2 cup sugar, and vanilla bean seeds in a bowl. Add eggs and stir to combine. Mix flour, baking powder, and salt in a bowl and add to butter mixture. Add milk if batter is too thick',
+      'Pour batter into the prepared pie plate. Distribute apple slices in a thick layer on top of the batter. Dot with cubed butter and sprinkle with 1/4 cup sugar.',
+      'Bake in the preheated oven until a toothpick inserted into the center comes out clean, 30 to 45 minutes. Cool on a wire rack for 5 minutes. Run a table knife around the edges to loosen. Invert carefully onto a serving plate or cooling rack. Let cool completely.'
+    ],
+    isGlutenFree: false,
+    isVegan: false,
+    isVegetarian: true,
+    isLactoseFree: false,
+  ),
+  Meal(
+    id: '115',
+    categories: [
+      'c1',
+    ],
+    title: 'Bucatini Cacio e Pepe ',
+    affordability: Affordability.Affordable,
+    complexity: Complexity.Simple,
+    imageURL:
+        'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F2253389.jpg&w=596&h=596&c=sc&poi=face&q=85',
+    duration: 25,
+    ingredients: [
+      '(for 6 servings)',
+      '1 teaspoon salt',
+      '1 pound bucatini (dry)',
+      '2 cups finely grated Pecorino Romano cheese',
+      '1 ½ tablespoons freshly ground black pepper, or more to taste',
+    ],
+    steps: [
+      'Bring a large pot of water to a boil and add salt. Cook bucatini in the boiling water, stirring occasionally, until tender yet firm to the bite, 8 to 10 minutes.',
+      'Place grated Pecorino Romano cheese into a large glass bowl and mix with a fork to make sure the cheese contains no lumps.',
+      'Once the bucatini are al dente, lift them out with a spaghetti fork or tongs and put them directly into the bowl with the cheese. Do not allow the water to drain too much.',
+      'Add one ladle of pasta water to the bowl. Stir the bucatini around until a cream has formed. Add more pasta water, little by little, until a thick cream has formed. Sprinkle freshly ground pepper over the pasta. Toss and serve immediately.',
+    ],
+    isGlutenFree: false,
+    isVegan: false,
+    isVegetarian: true,
+    isLactoseFree: false,
+  ),
+  Meal(
     id: 'm1',
     categories: [
       'c1',

@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import '../dummy_data.dart';
 
 class MealDetailScreen extends StatelessWidget {
+  final Function toggleFavorite;
+  final Function isFavorite;
+  MealDetailScreen(this.toggleFavorite, this.isFavorite);
+
   static const route = '/mealDetail';
 
   Widget buildSectionTitle(String text, BuildContext context) {
@@ -39,6 +43,7 @@ class MealDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final String mealId = ModalRoute.of(context).settings.arguments;
     final selectedMeal = DUMMY_MEALS.firstWhere((meal) => meal.id == mealId);
+   
     //must practice .firstwhere()
     /* example:
     const jacketColor = ['red','orange','green','blue','velvet'];
@@ -78,13 +83,17 @@ List <Jacket> jackets = [
    */
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.delete),
-        onPressed: () {
-          Navigator.of(context).pop(mealId);
-        },
+        child: Icon(isFavorite(mealId) ? Icons.star : Icons.star_border),
+        onPressed: () => toggleFavorite(mealId),
       ),
       appBar: AppBar(
         title: Text(selectedMeal.title),
+        
+        // leading: IconButton(
+        //     icon: Icon(Icons.arrow_back),
+        //     onPressed: () {
+        //     isFavorite(mealId) ? Navigator.of(context).pop('delete it'):Navigator.of(context).pop('favorite');
+        //     }),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -101,7 +110,8 @@ List <Jacket> jackets = [
               itemCount: selectedMeal.ingredients.length,
               itemBuilder: (ctx, index) {
                 return Card(
-                  color: Theme.of(context).accentColor,
+                  // color: Theme.of(context)
+                  color: Colors.amber,
                   child: Text(selectedMeal.ingredients[index]),
                 );
               },
